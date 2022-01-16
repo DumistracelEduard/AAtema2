@@ -9,7 +9,7 @@ student@aa:$ tree -L 1
 ├── check.zip
 ├── install.sh
 ├── Makefile.example_cpp
-├── Makefile.exampleJava
+├── Makefile
 ├── README.md
 ├── reclame.cpp
 ├── Reclame.java

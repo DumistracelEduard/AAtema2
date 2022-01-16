@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public abstract class Task {
+public abstract class Task extends Matrix {
     public abstract void solve() throws IOException, InterruptedException;
 
     public abstract void readProblemData() throws IOException;

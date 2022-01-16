@@ -9,13 +9,13 @@ run_reclame:
 run_registre:
 	java Registre
 
-retele: Retele.java Task.java
+retele: Retele.java Task.java Matrix.java
 	javac $^
 
-reclame: Reclame.java Task.java
+reclame: Reclame.java Task.java Matrix.java
 	javac $^
 
-registre: Registre.java Task.java
+registre: Registre.java Task.java Matrix.java
 	javac $^
 
 clean:
