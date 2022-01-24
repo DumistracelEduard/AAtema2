@@ -3,32 +3,35 @@ import java.util.Scanner;
 public class Matrix {
     private int vertices;
     private int edges;
-    private int extraData;
-    private int[][] adjMatrix;
+    private int data;
+    private int[][] matrix;
 
-    public void readDataTask2() {
-        Scanner scanner = new Scanner(System.in);
-        this.vertices = scanner.nextInt();
-        this.edges = scanner.nextInt();
-        this.adjMatrix = new int[vertices][vertices];
-
-        for(int i = 0; i < edges; ++i) {
-            adjMatrix[scanner.nextInt() - 1][scanner.nextInt() - 1] = 1;
-        }
-    }
-
-    public void readDataTask1() {
+    public void readDataToReclame() {
         Scanner scanner = new Scanner(System.in);
         int x, y;
         this.vertices = scanner.nextInt();
         this.edges = scanner.nextInt();
-        this.extraData = scanner.nextInt();
+        this.matrix = new int[vertices][vertices];
 
-        this.adjMatrix = new int[vertices][vertices];
+        for(int i = 0; i < edges; ++i) {
+            x = scanner.nextInt() - 1;
+            y = scanner.nextInt() - 1;
+            matrix[x][y] = 1;
+        }
+    }
+
+    public void readDataRetele() {
+        Scanner scanner = new Scanner(System.in);
+        int x, y;
+        this.vertices = scanner.nextInt();
+        this.edges = scanner.nextInt();
+        this.data = scanner.nextInt();
+
+        this.matrix = new int[vertices][vertices];
         for (int i = 0; i < edges; ++i) {
             x = scanner.nextInt() - 1;
             y = scanner.nextInt() - 1;
-            adjMatrix[x][y] = 1;
+            matrix[x][y] = 1;
         }
     }
 
@@ -40,12 +43,12 @@ public class Matrix {
         this.edges = edges;
     }
 
-    public void setExtraData(int extraData) {
-        this.extraData = extraData;
+    public void setData(int data) {
+        this.data = data;
     }
 
-    public void setAdjMatrix(int[][] adjMatrix) {
-        this.adjMatrix = adjMatrix;
+    public void setMatrix(int[][] matrix) {
+        this.matrix = matrix;
     }
 
     public int getVertices() {
@@ -56,11 +59,11 @@ public class Matrix {
         return this.edges;
     }
 
-    public int getExtraData() {
-        return extraData;
+    public int getData() {
+        return data;
     }
 
-    public int[][] getAdjMatrix() {
-        return adjMatrix;
+    public int[][] getMatrix() {
+        return matrix;
     }
 }

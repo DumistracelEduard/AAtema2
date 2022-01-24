@@ -1,92 +1,29 @@
-Android este o platformă software și un sistem de operare pentru dispozitive și telefoane mobile bazată pe nucleul Linux, dezvoltată inițial de compania Google, iar mai târziu de consorțiul comercial Open Handset Alliance.[2] Android permite dezvoltatorilor să scrie un cod gestionat în limbajul Java, controlând dispozitivul prin intermediul bibliotecilor Java dezvoltate de Google.[3] Aplicațiile scrise în C și în alte limbaje pot fi compilate în cod mașină ARM și executate, dar acest model de dezvoltare nu este sprijinit oficial de către Google.[4][5]
+324CA Dumistracel Eduard-Costin
+    In rezolvarea acestor probleme am realizat clasa matrix care salveaza
+nr de noduri si numarul de legaturi si dimensiunea in cazul unei probleme.
 
-Lansarea platformei Android la 5 noiembrie 2007 a fost anunțată prin fondarea Open Handset Alliance, un consorțiu de 48 de companii de hardware, software și de telecomunicații, consacrat dezvoltării de standarde deschise pentru dispozitive mobile.[6] Google a lansat cea mai mare parte a codului Android sub licența Apache, o licență de tip free-software și open source.[7]
-Google a dezvoltat și alte sisteme de operare bazate pe Android: Wear OS pentru ceasuri inteligente, Android TV pentru SmartTV și Android Auto pentru autoturisme.
-Cuprins
+Retele:
+    Reducerea problemei la SAT:
+        ->un nod nu se poate afla cu alt nod in aceeasi cicla daca nu are
+            muchie intre ele
+        ->un nod nu poate face parte din clica decat o data
+        ->clica de k noduri si toate nodurile pot apartine clicai
+        ->un nod face parte sigur dintre nodurile grafului
+    Descifrarea mesajului:
+        ->am verificat daca mesajul oracolului este "TRUE" si cautam
+        fiecare elem > 0 pentru a determina nodurile din clica
 
-    1 Istoric
-        1.1 Fondarea Open Handset Alliance
-        1.2 Open Source
-    2 Caracteristici
-    3 Produse hardware care rulează Android
-        3.1 Lansate
-        3.2 Anunțate
-        3.3 Amânate
-        3.4 Instalații aftermarket
-    4 Dezvoltarea de software
-        4.1 Software Development Kit
-        4.2 Platforme Android
-        4.3 Android Developer Challenge
-        4.4 Codul mașină
-            4.4.1 Cod mașină pe T-Mobile G1
-        4.5 Actualizări
-    5 Vânzări
-    6 Critici
-    7 Referințe
-    8 Vezi și
-    9 Legături externe
+Reclame:
+    -> in cadrul acestei probleme realizam un imput corespunzator problemei
+        de retele, dar de data asta dimensiunea incepe de la numarul de
+        noduri si scade cu fiecare iteratie pana gasim conditia "True".
+    -> dupa ce am gasit conditia "True", nodurile care ies in urma
+        interpretarii acestora le vom stoca intr-un vector
 
-Istoric
-Logoul alternativ
-
-În iulie 2005 Google a achiziționat Android, Inc, o mică companie de tip startup cu sediul în Palo Alto, California, SUA.[8] Cofondatorii companiei Android, care au continuat să muncească la Google, au fost Andy Rubin (cofondator al Danger[9]), Rich Miner (cofondator al Wildfire Communications, Inc[10]), Nick Sears (fost vicepreședinte al T-Mobile[11]) și Chris White (unul dintre primii ingineri ai WebTV[necesită citare]). La acea dată se cunoștea foarte puțin despre Android, Inc., doar că făceau software pentru telefoane mobile.[8] Aceasta a cauzat zvonuri că Google ar plănui să intre pe piața telefoniei mobile, deși era neclar ce funcție ar putea îndeplini în această piață.[necesită citare]
-
-La Google, echipa condusă de Rubin a dezvoltat un sistem de operare pentru dispozitive mobile bazat pe Linux, pe care l-au prezentat producătorilor de telefoane mobile și operatorilor de rețele de telefonie mobilă, cu perspectiva de a asigura un sistem flexibil, upgradabil.[necesită citare] Google a raportat că a aliniat deja o serie de parteneri producători de componente hardware și software la noul concept, și a semnalat operatorilor de rețele de telefonie mobilă că era deschis la diferite grade de cooperare din partea acestora.[12][13][14] Mai multe speculații că Google ar fi putut intra pe piața telefoniei mobile au apărut în decembrie 2006.[15] Rapoarte de la BBC și Wall Street Journal au remarcat faptul că Google își dorea căutarea web și aplicațiile sale pe telefoane mobile și că lucra din greu către acest țel. Presa și siturile de știri au publicat curând zvonuri că Google ar dezvolta un dispozitiv mobil marca Google.[16] A urmat și mai multă speculație, susținând că în timp ce Google definea specificațiile tehnice, ar fi demonstrat prototipuri producătorilor de telefoane mobile și operatorilor de rețea. S-a raportat că până la 30 de telefoane prototip operau deja pe piață.[17]
-
-În septembrie 2007 InformationWeek a publicat un studiu al companiei Evalueserve care dezvăluia că Google a depus cereri pentru mai multe brevete de invenție în domeniul telefoniei mobile.[18][19]
-Fondarea Open Handset Alliance
-Articol principal: Open Handset Alliance.
-
-"Today's announcement is more ambitious than any single 'Google Phone' that the press has been speculating about over the past few weeks. Our vision is that the powerful platform we're unveiling will power thousands of different phone models."
--Eric Schmidt, Google Chairman/CEO[2]
-
-La 5 noiembrie 2007 a fost făcut public Open Handset Alliance, un consorțiu incluzând Google, HTC, Intel, Motorola, Qualcomm, T-Mobile, Sprint Nextel și Nvidia, cu scopul de a dezvolta standarde deschise pentru dispozitive mobile.[2] Odată cu formarea Open Handset Alliance, OHA a dezvăluit de asemenea primul său produs, Android, o platformă pentru dispozitive mobile construită pe nucleul Linux, versiunea 2.6.[2]
-
-La 9 decembrie 2008, a fost anunțat că 14 noi membri au aderat la proiectul Android, incluzând: Sony Ericsson, Vodafone Group Plc, ARM Holdings Plc, Asustek Computer Inc, Toshiba Corp și Garmin Ltd.[20]
-
-Președintele și CEO-ul Google Eric Schmidt a avut nevoie de o bună bucată de timp în comunicatul de presă oficial pentru a elimina toate zvonurile și speculațiile precedente cu privire la existența unui telefon Google.[2]
-Open Source
-
-Începând cu 21 octombrie 2008, Android a fost disponibil ca Open Source. Google a deschis întregul cod sursă (inclusiv suportul pentru rețea și telefonie [21]), care anterior era indisponibil, sub licența Apache.[22] Sub licența Apache producătorii sunt liberi să adauge extensii proprietare, fără a le face disponibile comunității open source. În timp ce contribuțiile Google la această platformă se așteaptă să rămână open source, numărul versiunilor derivate ar putea exploda, folosind o varietate de licențe.
-
-Android a fost criticat că nu este software open source în totalitate, în ciuda a ceea ce a fost anunțat de către Google. Părți ale SDK-ului sunt proprietare și sursă închisă și unii cred că acest lucru este pentru ca Google să poată controla platforma.[23][24][25][26] Licența Software Development Kit-ul Android [27] afirmă că:
-
-    „3.2 You agree that Google (or Google's licensors) own all legal right, title and interest in and to the SDK, including any intellectual property rights which subsist in the SDK. Use, reproduction and distribution of components of the SDK licensed under an open source software license are governed solely by the terms of that open source software license and not by this License Agreement. Until the SDK is released under an open source license, you may not extract the source code or create a derivative work of the SDK.”
-
-Cu toate acestea, Google a anunțat între timp că toate componentele sistemului de operare vor fi lansate sub licența Apache unde este cazul și sub licența GPL în rest.[necesită citare]
-Wiki letter w.svg
-	Puteți îmbunătăți această secțiune extinzând-o
-cu: Is all that is needed to use the platform on a custom hardware open? Mention about DVM, HAL,...
-Mai multe informații ar putea fi găsite pe pagina de discuții sau la cereri de extindere.
-Caracteristici
-Architectura de software a lui Android
-Servitorul de ecran este SurfaceFlinger
-Un posibil ecran pe baza Androidului.
-
-Caracteristici si specificații actuale:[28][29]
-Configurații dispozitive 	Platforma este adaptabilă la configurații mai mari, VGA, biblioteci grafice 2D, biblioteci grafice 3D bazate pe specificația OpenGL ES 1.0 și configurații tradiționale smartphone.
-Stocare de date 	Software-ul de baze de date SQLite este utilizat în scopul stocării datelor
-Conectivitate 	Android suportă tehnologii de conectivitate incluzând GSM/EDGE, CDMA, EV-DO, UMTS, Bluetooth și Wi-Fi.
-Mesagerie instant 	SMS și MMS sunt formele de mesagerie instant disponibile, inclusiv conversații de mesaje text.
-Navigatorul de web 	
-Articol principal: WebKit.
-Navigatorul de web disponibil în Android este bazat pe platforma de aplicații open source WebKit.
-Mașina virtuală Dalvik 	Software-ul scris în Java poate fi compilat în cod mașină Dalvik și executat de mașina virtuală Dalvik, care este o implementare specializată de mașină virtuală concepută pentru utilizarea în dispozitivele mobile, deși teoretic nu este o Mașină Virtuală Java standard.
-Suport media 	Android acceptă următoarele formate media audio/video/imagine: MPEG-4, H.264, MP3, AAC, OGG, AMR, JPEG, PNG, GIF.
-Suport hardware adițional 	Android poate utiliza camere video/foto, touchscreen, GPS, accelerometru, și grafică accelerată 3D.
-Mediu de dezvoltare 	Include un emulator de dispozitive, unelte de depanare, profilare de memorie și de performanță, un plug-in pentru mediul de dezvoltare Eclipse.
-Piața Android 	
-Articol principal: Android Market.
-Similar cu App Store-ul de pe iPhone, Piața Android este un catalog de aplicații care pot fi descărcate și instalate pe hardware-ul țintă prin comunicație fără fir, fără a se utiliza un PC. Inițial au fost acceptate doar aplicații gratuite. Aplicații contra cost sunt disponibile pe Piața Android începând cu 19 februarie 2009.[30]
-Multi-touch 	Android are suport nativ pentru multi-touch, dar această funcționalitate este dezactivată (posibil pentru a se evita încălcarea brevetelor Apple pe tehnologia touch-screen [31][31][31][31][31][31][31][31][31][31][31][31][31][32][32][32][32][32][32][32][32][32][32][32][32][32][32][32][32][31][31][31][31]).O modificare neoficială, care permite multi-touch a fost dezvoltată.[32]
-Produse hardware care rulează Android
-Lansate
-HTC Dream (T-Mobile G1)
-
-    HTC Dream (comercializat ca T-Mobile G1, Era G1 în Polonia) este primul telefon de pe piață care utilizează platforma Android.[33][34] Telefonul este parte a unui efort pentru standarde deschise al Open Handset Alliance.[35]
-
-    Acesta a fost lansat în SUA pe 22 octombrie 2008, în Marea Britanie pe 30 octombrie 2008,[36] în Olanda și Republica Cehă pe 31 ianuarie 2009,[37] Polonia pe 23 februarie 2009, în Australia pe 5 februarie,[38] și va fi disponibil în alte țări, inclusiv în Singapore, Franța și Germania, la începutul anului 2009.[39]Format:Updateneeded
-
-    Compania chineză Qigi a lansat o versiune a dispozitivului mobil i6 (anterior Windows Mobile) rulând Android ref>[httpo.uk/2008d-sne-ul bazat pe Anid din romania /ref> Aparatul este produs de către producătorul chinez TechFaith.[40]
-
-Anunțate
+Registe:
+    -> poate sa fie redusa la problema colorarii unui graf in k culori
+    Reducera problemei la SAT:
+    -> fiecare nod poate sa fie colorat in k culori
+    -> 2 noduri care au omuchie intre ele nu pot avea aceeasi culoare
+    -> un nod are cel putin o culoare pentru primele N clauze si pentru
+    urmatoarele clauze avem doar o culoare

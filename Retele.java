@@ -1,10 +1,8 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 class Retele extends Task {
-    StringBuilder answer;
+    private StringBuilder answer = new StringBuilder();
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Retele task = new Retele();
@@ -21,14 +19,14 @@ class Retele extends Task {
     }
 
     @Override
-    public void readProblemData() throws IOException {
-        readDataTask1();
+    public void readProblemData() {
+        readDataRetele();
     }
 
     @Override
     public void formulateOracleQuestion() throws IOException {
         int vertices = getVertices();
-        int cliques = getExtraData();
+        int cliques = getData();
         Set<List<Integer>> finalAnswer = new HashSet<>();
         List<Integer> line;
         int[][] matrix = new int[cliques][vertices];
@@ -63,7 +61,7 @@ class Retele extends Task {
 
         for (i = 0; i < vertices - 1; ++i) {
             for (j = i + 1; j < vertices; ++j) {
-                if (getAdjMatrix()[i][j] == 0) {
+                if (getMatrix()[i][j] == 0) {
                     for (int k = 0; k < cliques - 1; ++k) {
                         for (int l = k + 1; l < cliques; ++l) {
                             line = new ArrayList<>();
@@ -99,16 +97,23 @@ class Retele extends Task {
 
     @Override
     public void decipherOracleAnswer() throws IOException {
-        Scanner scanner = new Scanner(new File("sat.sol"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("sat.sol"));
         int number;
-        answer = new StringBuilder();
-        if (scanner.nextBoolean()) {
+        StringTokenizer st;
+        String buffer;
+        Boolean solvable = Boolean.valueOf(bufferedReader.readLine());
+        if (solvable) {
             this.answer.append("True\n");
+            buffer = bufferedReader.readLine();
+            st = new StringTokenizer(buffer);
+            int size = Integer.parseInt(st.nextToken());
             int remainder;
-            int size = scanner.nextInt();
+            buffer = bufferedReader.readLine();
+            st = new StringTokenizer(buffer);
             for (int i = 0; i < size; ++i) {
-                number = scanner.nextInt();
-                if (number > 0) {
+                number = Integer.parseInt(st.nextToken());
+                Boolean assigned = number > 0;
+                if (assigned) {
                     remainder = number % getVertices();
                     if (remainder == 0) {
                         this.answer.append(getVertices()).append(" ");
@@ -123,7 +128,7 @@ class Retele extends Task {
     }
 
     @Override
-    public void writeAnswer() throws IOException {
+    public void writeAnswer() {
         System.out.println(answer.toString());
     }
 }

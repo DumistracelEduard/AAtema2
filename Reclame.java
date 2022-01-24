@@ -1,11 +1,13 @@
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 class Reclame extends Task {
-    int[] v;
-    StringBuilder stringBuilder = new StringBuilder();
-    Retele reduceData;
+    private int[] finalAnswer;
+    private StringBuilder stringBuilder = new StringBuilder();
+    private Retele retele;
+    private Boolean type;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Reclame reclame = new Reclame();
@@ -15,17 +17,18 @@ class Reclame extends Task {
     @Override
     public void solve() throws IOException, InterruptedException {
         readProblemData();
-        reduceData = new Retele();
-        v = new int[getVertices() + 1];
-        reduceData(reduceData);
+        retele = new Retele();
+        finalAnswer = new int[getVertices() + 1];
+        reduceData(retele);
 
-        for (int clique = getVertices() - 2; clique > 1; --clique) {
-            reduceData.setExtraData(clique);
+        for (int clique = getVertices(); clique > 1; --clique) {
+            retele.setData(clique);
             formulateOracleQuestion();
-            reduceData.askOracle();
-            if(answer()) {
-                for (int j = 1; j < v.length; j++) {
-                    if (v[j] == 0) {
+            retele.askOracle();
+            decipherOracleAnswer();
+            if(type) {
+                for (int j = 1; j < finalAnswer.length; j++) {
+                    if (finalAnswer[j] == 0) {
                         stringBuilder.append(j).append(" ");
                     }
                 }
@@ -35,56 +38,59 @@ class Reclame extends Task {
         }
     }
 
-    boolean answer() throws IOException {
-        Scanner scanner = new Scanner(new File("sat.sol"));
-
-        if (scanner.nextBoolean()) {
-           int size = scanner.nextInt();
-           int number;
-           for (int i = 0; i < size; ++i) {
-               number = scanner.nextInt();
-               if (number > 0) {
-                   if (number % getVertices() == 0) {
-                       v[getVertices()] = 1;
-                   } else {
-                       v[(number % getVertices())] = 1;
-                   }
-               }
-           }
-           return true;
-        } else {
-            return false;
-        }
-    }
-
     public void reduceData(Retele reduce) {
         for (int i = 0; i < getVertices() - 1; ++i) {
             for (int j = i + 1; j < getVertices(); ++j) {
-                if (getAdjMatrix()[i][j] == 1) {
-                    getAdjMatrix()[i][j] = 0;
+                if (getMatrix()[i][j] == 1) {
+                    getMatrix()[i][j] = 0;
                 } else {
-                    getAdjMatrix()[i][j]  = 1;
+                    getMatrix()[i][j]  = 1;
                 }
             }
         }
         reduce.setVertices(getVertices());
         reduce.setEdges(getEdges());
-        reduce.setAdjMatrix(getAdjMatrix());
+        reduce.setMatrix(getMatrix());
     }
 
     @Override
     public void readProblemData() throws IOException {
-        readDataTask2();
+        readDataToReclame();
     }
 
     @Override
     public void formulateOracleQuestion() throws IOException {
-        reduceData.formulateOracleQuestion();
+        retele.formulateOracleQuestion();
     }
 
     @Override
     public void decipherOracleAnswer() throws IOException {
-
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("sat.sol"));
+        StringTokenizer stringBuf;
+        String buff;
+        Boolean solvable = Boolean.valueOf(bufferedReader.readLine());
+        if (solvable) {
+            buff = bufferedReader.readLine();
+            stringBuf = new StringTokenizer(buff);
+            int size = Integer.parseInt(stringBuf.nextToken());
+            int number;
+            buff = bufferedReader.readLine();
+            stringBuf = new StringTokenizer(buff);
+            for (int i = 0; i < size; ++i) {
+                number = Integer.parseInt(stringBuf.nextToken());
+                Boolean assigned = number > 0;
+                if (assigned) {
+                    if (number % getVertices() == 0) {
+                        finalAnswer[getVertices()] = 1;
+                    } else {
+                        finalAnswer[(number % getVertices())] = 1;
+                    }
+                }
+            }
+            this.type = true;
+        } else {
+            this.type = false;
+        }
     }
 
     @Override

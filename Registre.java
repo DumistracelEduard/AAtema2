@@ -1,10 +1,9 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 class Registre extends Task {
-    StringBuilder stringBuilder;
+    private StringBuilder stringBuilder = new StringBuilder();
+
     public static void main(String[] args) throws IOException, InterruptedException {
         Registre registre = new Registre();
         registre.solve();
@@ -21,12 +20,12 @@ class Registre extends Task {
 
     @Override
     public void readProblemData() throws IOException {
-        readDataTask1();
+        readDataRetele();
     }
 
     @Override
     public void formulateOracleQuestion() throws IOException {
-        int[][] matrix = new int[getVertices()][getExtraData()];
+        int[][] matrix = new int[getVertices()][getData()];
         List<Integer> line;
         Set<List<Integer>> answer = new HashSet<>();
         int i, j;
@@ -34,7 +33,7 @@ class Registre extends Task {
         int count = 1;
         for (i = 0; i < getVertices(); ++i) {
             line = new ArrayList<>();
-            for (j = 0; j < getExtraData(); ++j) {
+            for (j = 0; j < getData(); ++j) {
                 matrix[i][j] = count;
                 ++count;
                 line.add(matrix[i][j]);
@@ -45,8 +44,8 @@ class Registre extends Task {
         number += count;
 
         for (i = 0; i < getVertices(); ++i) {
-            for (j = 0; j < getExtraData(); ++j) {
-                for (int k = j + 1; k < getExtraData(); k++) {
+            for (j = 0; j < getData(); ++j) {
+                for (int k = j + 1; k < getData(); k++) {
                     line = new ArrayList<>();
                     line.add(-matrix[i][j]);
                     line.add(-matrix[i][k]);
@@ -59,8 +58,8 @@ class Registre extends Task {
 
         for (i = 0; i < getVertices() - 1; ++i) {
             for (j = i + 1; j < getVertices(); ++j) {
-                if (getAdjMatrix()[i][j] == 1) {
-                    for (int k = 0; k < getExtraData(); ++k) {
+                if (getMatrix()[i][j] == 1) {
+                    for (int k = 0; k < getData(); ++k) {
                         line = new ArrayList<>();
                         line.add(-matrix[i][k]);
                         line.add(-matrix[j][k]);
@@ -71,7 +70,7 @@ class Registre extends Task {
                 }
             }
         }
-        StringBuilder data = new StringBuilder("p cnf " + (getExtraData() * getVertices()) + " " + number + "\n");
+        StringBuilder data = new StringBuilder("p cnf " + (getData() * getVertices()) + " " + number + "\n");
         for (List<Integer> list : answer) {
             for (Integer number2 : list) {
                 if (number2 == 0) {
@@ -90,19 +89,26 @@ class Registre extends Task {
 
     @Override
     public void decipherOracleAnswer() throws IOException {
-        Scanner scanner = new Scanner(new File("sat.sol"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("sat.sol"));
         int number;
-        stringBuilder = new StringBuilder();
-        if (scanner.nextBoolean()) {
+        StringTokenizer st;
+        String buffer;
+        Boolean solvable = Boolean.valueOf(bufferedReader.readLine());
+        if (solvable) {
             this.stringBuilder.append("True\n");
+            buffer = bufferedReader.readLine();
+            st = new StringTokenizer(buffer);
+            int size = Integer.parseInt(st.nextToken());
             int remainder;
-            int size = scanner.nextInt();
+            buffer = bufferedReader.readLine();
+            st = new StringTokenizer(buffer);
             for (int i = 0; i < size; ++i) {
-                number = scanner.nextInt();
-                if (number > 0) {
-                    remainder = number % getExtraData();
+                number = Integer.parseInt(st.nextToken());
+                Boolean assigned = number > 0;
+                if (assigned) {
+                    remainder = number % getData();
                     if (remainder == 0) {
-                        this.stringBuilder.append(getExtraData()).append(" ");
+                        this.stringBuilder.append(getData()).append(" ");
                     } else {
                         this.stringBuilder.append(remainder).append(" ");
                     }
